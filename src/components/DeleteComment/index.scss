@@ -1,20 +1,21 @@
 .delete-comment-container {
+  background-color: var(--white);
   padding: 28px;
-  background-color: white;
   border-radius: 8px;
   max-width: 400px;
+  margin-top: 20px;
 
   .header-text {
+    color: var(--dark-blue);
     margin: 0;
-    color: hsl(212, 24%, 26%);
     font-size: 20px;
     font-weight: 500;
   }
 
   .body-content {
+    color: var(--grayish-blue);
     margin: 0;
     margin-top: 16px;
-    color: hsl(211, 10%, 45%);
     font-size: 16px;
   }
 
@@ -24,19 +25,19 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     button {
+      color: var(--white);
       text-transform: uppercase;
       padding: 16px;
       border: none;
       font-size: 12px;
-      color: white;
       font-weight: 500;
       border-radius: 8px;
     }
     .cancel {
-      background: hsl(211, 10%, 45%);
+      background: var(--grayish-blue);
     }
     .delete {
-      background: hsl(358, 79%, 66%);
+      background: var(--soft-red);
     }
   }
 }
