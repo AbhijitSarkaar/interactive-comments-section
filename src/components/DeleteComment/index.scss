@@ -1,3 +1,5 @@
+@use "../../styles/mixins";
+
 .delete-comment-container {
   background-color: var(--white);
   padding: 28px;
@@ -6,31 +8,27 @@
   margin-top: 20px;
 
   .header-text {
-    color: var(--dark-blue);
+    @include mixins.textStyle(20px, var(--dark-blue), 500);
     margin: 0;
-    font-size: 20px;
-    font-weight: 500;
   }
 
   .body-content {
-    color: var(--grayish-blue);
+    @include mixins.textStyle(16px, var(--grayish-blue));
     margin: 0;
     margin-top: 16px;
-    font-size: 16px;
   }
 
   .action-buttons {
-    margin-top: 16px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
+    margin-top: 16px;
+
     button {
-      color: var(--white);
+      @include mixins.textStyle(12px, var(--white), 500);
       text-transform: uppercase;
       padding: 16px;
       border: none;
-      font-size: 12px;
-      font-weight: 500;
       border-radius: 8px;
     }
     .cancel {
