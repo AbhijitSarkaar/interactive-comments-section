@@ -1,0 +1,30 @@
+@use "Style/mixins";
+
+.comment-mobile-header-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  img {
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+  }
+  .username {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    .text {
+      @include mixins.textStyle(13px, var(--dark-blue), 500);
+    }
+    .current-user {
+      @include mixins.textStyle(13px, var(--white));
+      border-radius: 2px;
+      background-color: var(--moderate-blue);
+      padding: 2px 6px;
+    }
+  }
+  .time {
+    @include mixins.textStyle(13px, var(--grayish-blue));
+  }
+}

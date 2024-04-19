@@ -1,0 +1,12 @@
+@media screen and (min-width: 320px) {
+  .comment-mobile-container {
+    padding: 16px;
+    background-color: var(--white);
+  }
+}
+
+@media screen and (min-width: 376px) {
+  .comment-mobile-container {
+    display: none;
+  }
+}

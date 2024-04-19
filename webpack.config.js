@@ -29,4 +29,9 @@ module.exports = {
       template: "./src/index.html",
     }),
   ],
+  resolve: {
+    alias: {
+      Style: path.resolve(__dirname, "src/styles/"),
+    },
+  },
 };
