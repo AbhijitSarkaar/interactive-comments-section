@@ -1,0 +1,40 @@
+@media screen and (min-width: 320px) {
+  .add-comment-mobile-container {
+    background-color: white;
+    padding: 16px;
+
+    textarea {
+      font-family: inherit;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid lightgray;
+      min-height: 96px;
+      padding: 20px;
+      box-sizing: border-box;
+      color: hsl(211, 10%, 45%);
+    }
+
+    .footer {
+      margin-top: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        height: 32px;
+        width: 32px;
+        border-radius: 50%;
+      }
+
+      button {
+        text-transform: uppercase;
+        padding: 16px 32px;
+        border-radius: 8px;
+        border: none;
+        background: hsl(238, 40%, 52%);
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
+}
