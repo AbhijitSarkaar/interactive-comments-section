@@ -40,7 +40,8 @@
     div.delete {
       @include mixins.textStyle(16px, var(--soft-red), 500);
     }
-    div.edit {
+    div.edit,
+    div.reply {
       @include mixins.textStyle(16px, var(--moderate-blue), 500);
     }
   }

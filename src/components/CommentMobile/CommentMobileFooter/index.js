@@ -2,6 +2,7 @@ import "./index.scss";
 import React from "react";
 import IconDelete from "./icon-delete.svg";
 import IconEdit from "./icon-edit.svg";
+import IconReply from "./icon-reply.svg";
 
 const CommentMobileFooter = () => {
   return (
@@ -20,6 +21,10 @@ const CommentMobileFooter = () => {
           <img src={IconEdit} />
           <p className="text">Edit</p>
         </div>
+        {/* <div className="reply">
+          <img src={IconReply} />
+          <p className="text">Reply</p>
+        </div> */}
       </div>
     </section>
   );
