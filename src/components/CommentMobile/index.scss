@@ -1,7 +1,18 @@
+@use "Style/mixins";
+
 @media screen and (min-width: 320px) {
   .comment-mobile-container {
     padding: 16px;
     background-color: var(--white);
+
+    .body-content {
+      @include mixins.textStyle(16px, var(--grayish-blue), 400);
+      margin: 16px 0;
+      line-height: 24px;
+      span.user {
+        color: var(--moderate-blue);
+      }
+    }
   }
 }
 

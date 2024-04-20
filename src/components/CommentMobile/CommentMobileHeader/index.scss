@@ -15,16 +15,19 @@
     align-items: center;
 
     .text {
-      @include mixins.textStyle(13px, var(--dark-blue), 500);
+      @include mixins.textStyle(16px, var(--dark-blue), 500);
+      margin: 0;
     }
     .current-user {
       @include mixins.textStyle(13px, var(--white));
       border-radius: 2px;
       background-color: var(--moderate-blue);
       padding: 2px 6px;
+      margin: 0;
     }
   }
   .time {
-    @include mixins.textStyle(13px, var(--grayish-blue));
+    @include mixins.textStyle(16px, var(--grayish-blue));
+    margin: 0;
   }
 }

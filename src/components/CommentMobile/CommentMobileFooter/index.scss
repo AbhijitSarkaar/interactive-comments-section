@@ -1,0 +1,47 @@
+@use "Style/mixins";
+
+.comment-mobile-footer-container {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .upvote-count {
+    display: flex;
+    align-items: center;
+    padding: 8px 16px;
+    gap: 16px;
+    border-radius: 10px;
+    background-color: var(--very-light-gray);
+    .inc,
+    .dec {
+      color: var(--light-grayish-blue);
+    }
+    .count {
+      @include mixins.textStyle(16px, var(--moderate-blue));
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 16px;
+
+    div {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      img {
+        align-self: center;
+      }
+      .text {
+        margin: 0;
+      }
+    }
+    div.delete {
+      @include mixins.textStyle(16px, var(--soft-red), 500);
+    }
+    div.edit {
+      @include mixins.textStyle(16px, var(--moderate-blue), 500);
+    }
+  }
+}
