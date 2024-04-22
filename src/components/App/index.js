@@ -1,14 +1,17 @@
 import "./index.scss";
 
 import React from "react";
-import AddCommentMobile from "../AddCommentMobile";
-import DeleteComment from "../DeleteComment";
-import CommentMobile from "../CommentMobile";
+
+import AddCommentMobile from "~/components/AddCommentMobile";
+import DeleteComment from "~/components/DeleteComment";
+import CommentMobile from "~/components/CommentMobile";
+
+import CommentDesktop from "~/components/CommentDesktop";
 
 const App = () => {
   return (
     <section className="app-container">
-      <CommentMobile />
+      <CommentDesktop />
     </section>
   );
 };

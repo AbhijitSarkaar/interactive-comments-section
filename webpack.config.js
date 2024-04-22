@@ -32,6 +32,7 @@ module.exports = {
   resolve: {
     alias: {
       Style: path.resolve(__dirname, "src/styles/"),
+      "~": path.resolve(__dirname, "src"),
     },
   },
 };

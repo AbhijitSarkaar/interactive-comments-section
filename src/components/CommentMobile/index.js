@@ -1,8 +1,7 @@
 import "./index.scss";
-
 import React from "react";
-import CommentMobileHeader from "./CommentMobileHeader";
-import CommentMobileFooter from "./CommentMobileFooter";
+import CommentMobileHeader from "~/components/CommentMobile/CommentMobileHeader";
+import CommentMobileFooter from "~/components/CommentMobile/CommentMobileFooter";
 
 const CommentMobile = () => {
   return (

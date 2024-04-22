@@ -1,8 +1,8 @@
-import "./index.scss";
-import "./styles/variables.scss";
+import "~/index.scss";
+import "~/styles/variables.scss";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./components/App";
+import App from "~/components/App";
 
 const el = document.getElementById("root");
 const root = ReactDOM.createRoot(el);
