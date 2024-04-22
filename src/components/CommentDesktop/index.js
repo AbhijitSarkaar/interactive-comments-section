@@ -13,6 +13,12 @@ const CommentDesktop = () => {
       </section>
       <section className="comment-section">
         <CommentDesktopHeader />
+        <div className="body-content">
+          <span className="mention">@ramsesmiron</span> I couldn’t agree more
+          with this. Everything moves so fast and it always seems like everyone
+          knows the newest library/framework. But the fundamentals are what stay
+          constant.
+        </div>
       </section>
     </section>
   );

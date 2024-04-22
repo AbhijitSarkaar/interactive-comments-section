@@ -19,6 +19,10 @@ const CommentDesktopHeader = () => {
           <img src="/images/icon-edit.svg" />
           <p>Edit</p>
         </div>
+        {/* <div className="button reply">
+          <img src="/images/icon-reply.svg" />
+          <p>Reply</p>
+        </div> */}
       </section>
     </section>
   );

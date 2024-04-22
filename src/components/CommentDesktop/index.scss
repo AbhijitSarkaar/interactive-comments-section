@@ -31,6 +31,15 @@
 
     .comment-section {
       width: 100%;
+
+      .body-content {
+        margin-top: 16px;
+        @include mixins.textStyle(16px, var(--grayish-blue));
+
+        .mention {
+          color: var(--moderate-blue);
+        }
+      }
     }
   }
 }
