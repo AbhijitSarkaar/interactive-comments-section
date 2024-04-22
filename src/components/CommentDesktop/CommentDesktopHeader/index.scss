@@ -1,0 +1,48 @@
+@use "Style/mixins";
+
+.comment-desktop-header-container {
+  display: flex;
+  justify-content: space-between;
+
+  .username {
+    display: flex;
+    align-items: center;
+
+    img {
+      height: 32px;
+      width: 32px;
+    }
+    .text {
+      margin-left: 16px;
+      @include mixins.textStyle(16px, var(--dark-blue), 500);
+    }
+    .current-user {
+      @include mixins.textStyle(13px, var(--white), 400, 15px);
+      background-color: var(--moderate-blue);
+      padding: 2px 6px;
+      margin-left: 8px;
+    }
+    .time {
+      @include mixins.textStyle(16px, var(--grayish-blue));
+      margin-left: 16px;
+    }
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 16px;
+
+    .button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      img {
+        align-self: center;
+      }
+      p {
+        margin: 0;
+      }
+    }
+  }
+}

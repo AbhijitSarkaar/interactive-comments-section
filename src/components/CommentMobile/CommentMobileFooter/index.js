@@ -1,8 +1,5 @@
 import "./index.scss";
 import React from "react";
-import IconDelete from "./icon-delete.svg";
-import IconEdit from "./icon-edit.svg";
-import IconReply from "./icon-reply.svg";
 
 const CommentMobileFooter = () => {
   return (
@@ -14,15 +11,15 @@ const CommentMobileFooter = () => {
       </div>
       <div className="action-buttons">
         <div className="delete">
-          <img src={IconDelete} />
+          <img src={"/images/icon-delete.svg"} />
           <p className="text">Delete</p>
         </div>
         <div className="edit">
-          <img src={IconEdit} />
+          <img src={"/images/icon-edit.svg"} />
           <p className="text">Edit</p>
         </div>
         {/* <div className="reply">
-          <img src={IconReply} />
+          <img src={"/images/icon-reply.svg"} />
           <p className="text">Reply</p>
         </div> */}
       </div>

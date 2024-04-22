@@ -1,0 +1,36 @@
+@use "Style/mixins";
+
+@media screen and (min-width: 320px) {
+  .comment-desktop-container {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .comment-desktop-container {
+    display: block;
+    background-color: white;
+    width: 730px;
+    margin: auto;
+    padding: 24px 24px;
+    display: flex;
+    gap: 24px;
+
+    .upvote-section {
+      display: flex;
+      flex-direction: column;
+      padding: 16px 14.5px;
+      gap: 15px;
+      background-color: var(--very-light-gray);
+      width: max-content;
+
+      .count {
+        @include mixins.textStyle(16px, var(--moderate-blue), 500);
+      }
+    }
+
+    .comment-section {
+      width: 100%;
+    }
+  }
+}
