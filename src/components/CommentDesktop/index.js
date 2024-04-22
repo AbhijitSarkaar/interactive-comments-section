@@ -2,6 +2,7 @@ import "./index.scss";
 import React from "react";
 
 import CommentDesktopHeader from "~/components/CommentDesktop/CommentDesktopHeader";
+import CommentDesktopEdit from "~/components/CommentDesktop/CommentDesktopEdit";
 
 const CommentDesktop = () => {
   return (
@@ -19,6 +20,7 @@ const CommentDesktop = () => {
           knows the newest library/framework. But the fundamentals are what stay
           constant.
         </div>
+        {/* <CommentDesktopEdit /> */}
       </section>
     </section>
   );

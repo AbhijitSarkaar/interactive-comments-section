@@ -19,6 +19,7 @@
     .upvote-section {
       display: flex;
       flex-direction: column;
+      align-self: flex-start;
       padding: 16px 14.5px;
       gap: 15px;
       background-color: var(--very-light-gray);
