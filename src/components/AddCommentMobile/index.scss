@@ -4,6 +4,7 @@
   .add-comment-mobile-container {
     background-color: var(--white);
     padding: 16px;
+    border-radius: 8px;
 
     textarea {
       @include mixins.textStyle(12px, var(--grayish-blue));

@@ -1,13 +1,15 @@
 import "./index.scss";
 import React from "react";
-import Button from "../Button";
+import Button from "~/components/Button";
+import TextArea from "~/components/TextArea";
+import UserAvatar from "~/components/UserAvatar";
 
 const AddCommentMobile = () => {
   return (
     <section className="add-comment-mobile-container">
-      <textarea placeholder="Add a comment..."></textarea>
+      <TextArea text={""} />
       <section className="footer">
-        <img src={"/images/image-juliusomo.png"} alt="avatar"></img>
+        <UserAvatar src={"/images/image-juliusomo.png"} />
         <Button text={"Send"} />
       </section>
     </section>

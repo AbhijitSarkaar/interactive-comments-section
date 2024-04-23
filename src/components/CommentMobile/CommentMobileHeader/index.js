@@ -1,11 +1,12 @@
 import "./index.scss";
 
 import React from "react";
+import UserAvatar from "~/components/UserAvatar";
 
 const CommentMobileHeader = () => {
   return (
     <section className="comment-mobile-header-container">
-      <img src={"/images/image-juliusomo.png"} alt="avatar" className="" />
+      <UserAvatar src={"/images/image-juliusomo.png"} />
       <div className="username">
         <p className="text">juliusomo</p>
         <div className="current-user">you</div>

@@ -1,20 +1,16 @@
 import "./index.scss";
-import React, { useState } from "react";
+import React from "react";
+import TextArea from "~/components/TextArea";
+import Button from "~/components/Button";
 
 const CommentDesktopEdit = () => {
-  const [rows, setRows] = useState(3);
+  let commentText = `@ramsesmiron I couldn’t agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant`;
 
   return (
     <section className="comment-desktop-edit-container">
-      <div className="grow-wrap">
-        <textarea
-          rows={rows}
-          value={`@ramsesmiron I couldn’t agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant`}
-        ></textarea>
-      </div>
-
+      <TextArea text={commentText} />
       <div className="button-container">
-        <button>Update</button>
+        <Button text={"Update"} />
       </div>
     </section>
   );

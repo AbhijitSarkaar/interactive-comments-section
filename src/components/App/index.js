@@ -9,12 +9,7 @@ import CommentDesktop from "~/components/CommentDesktop";
 import AddCommentDesktop from "~/components/AddCommentDesktop";
 
 const App = () => {
-  return (
-    <section className="app-container">
-      <CommentDesktop />
-      <AddCommentDesktop />
-    </section>
-  );
+  return <section className="app-container"></section>;
 };
 
 export default App;

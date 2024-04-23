@@ -1,8 +1,8 @@
 import "./index.scss";
 import React from "react";
-import Button from "../Button";
-import TextArea from "../TextArea";
-import UserAvatar from "../UserAvatar";
+import Button from "~/components/Button";
+import TextArea from "~/components/TextArea";
+import UserAvatar from "~/components/UserAvatar";
 
 const AddCommentDesktop = () => {
   const commentText = `Great work! I haven’t got much to add beyond what’s already been said, but I just wanted to say congrats! You’ve done an excellent job on this!`;
