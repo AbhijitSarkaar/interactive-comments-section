@@ -1,5 +1,6 @@
 import "./index.scss";
 import React from "react";
+import Button from "../Button";
 
 const AddCommentMobile = () => {
   return (
@@ -7,7 +8,7 @@ const AddCommentMobile = () => {
       <textarea placeholder="Add a comment..."></textarea>
       <section className="footer">
         <img src={"/images/image-juliusomo.png"} alt="avatar"></img>
-        <button>send</button>
+        <Button text={"Send"} />
       </section>
     </section>
   );

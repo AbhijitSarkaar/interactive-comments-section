@@ -1,0 +1,14 @@
+@use "Style/mixins";
+
+.textarea-container {
+  width: 100%;
+  .textarea-input {
+    width: 100%;
+    resize: none;
+    padding: 16px;
+    box-sizing: border-box;
+    border-radius: 8px;
+    font-family: var(--rubik);
+    @include mixins.textStyle(16px, var(--dark-blue));
+  }
+}

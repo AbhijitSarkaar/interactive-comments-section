@@ -1,0 +1,29 @@
+@use "Style/mixins";
+
+@media screen and (min-width: 320px) {
+  .add-comment-desktop-container {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .add-comment-desktop-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 24px;
+    background-color: var(--white);
+
+    .add-comment-input {
+      width: 100%;
+      resize: none;
+      padding: 16px;
+      box-sizing: border-box;
+      border-radius: 8px;
+      font-family: var(--rubik);
+      @include mixins.textStyle(16px, var(--dark-blue));
+    }
+  }
+}

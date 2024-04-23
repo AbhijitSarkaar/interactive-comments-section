@@ -1,0 +1,11 @@
+@use "Style/mixins";
+
+.primary-button {
+  padding: 12px 32px;
+  background-color: var(--moderate-blue);
+  @include mixins.textStyle(16px, var(--white), 500);
+  text-transform: uppercase;
+  border-radius: 8px;
+  border: none;
+  align-self: flex-start;
+}

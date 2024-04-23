@@ -1,11 +1,12 @@
 import "./index.scss";
 import React from "react";
+import UserAvatar from "../../UserAvatar";
 
 const CommentDesktopHeader = () => {
   return (
     <section className="comment-desktop-header-container">
       <section className="username">
-        <img src="/images/image-juliusomo.png" />
+        <UserAvatar src={"/images/image-juliusomo.png"} />
         <div className="text">juliusomo</div>
         <div className="current-user">you</div>
         <div className="time">1 week ago</div>

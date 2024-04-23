@@ -1,11 +1,13 @@
 @media screen and (min-width: 320px) {
   .app-container {
     font-family: var(--rubik);
-    padding: 32px 16px;
+    padding-top: 50px;
   }
 }
 
-@media screen and (min-width: 376px) {
+@media screen and (min-width: 900px) {
   .app-container {
+    width: 730px;
+    margin: auto;
   }
 }
