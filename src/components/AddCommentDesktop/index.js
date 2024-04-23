@@ -4,13 +4,11 @@ import Button from "~/components/Button";
 import TextArea from "~/components/TextArea";
 import UserAvatar from "~/components/UserAvatar";
 
-const AddCommentDesktop = () => {
-  const commentText = `Great work! I haven’t got much to add beyond what’s already been said, but I just wanted to say congrats! You’ve done an excellent job on this!`;
-
+const AddCommentDesktop = ({ avatarUrl }) => {
   return (
     <section className="add-comment-desktop-container">
-      <UserAvatar src={"/images/image-juliusomo.png"} />
-      <TextArea text={commentText} />
+      <UserAvatar src={avatarUrl} />
+      <TextArea text={""} />
       <Button text={"Send"} />
     </section>
   );

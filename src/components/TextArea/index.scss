@@ -10,5 +10,6 @@
     border-radius: 8px;
     font-family: var(--rubik);
     @include mixins.textStyle(16px, var(--dark-blue));
+    border: 1px solid var(--light-gray);
   }
 }

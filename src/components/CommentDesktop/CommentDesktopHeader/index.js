@@ -2,14 +2,16 @@ import "./index.scss";
 import React from "react";
 import UserAvatar from "../../UserAvatar";
 
-const CommentDesktopHeader = () => {
+const CommentDesktopHeader = ({ user, createdAt }) => {
+  const { username, image } = user;
+
   return (
     <section className="comment-desktop-header-container">
       <section className="username">
-        <UserAvatar src={"/images/image-juliusomo.png"} />
-        <div className="text">juliusomo</div>
+        <UserAvatar src={image.png} />
+        <div className="text">{username}</div>
         <div className="current-user">you</div>
-        <div className="time">1 week ago</div>
+        <div className="time">{createdAt}</div>
       </section>
       <section className="action-buttons">
         <div className="button delete">

@@ -7,6 +7,7 @@ const TextArea = ({ text }) => {
       <textarea
         className="textarea-input"
         value={text}
+        placeholder="Add a comment..."
         onChange={() => {}}
         rows={3}
       ></textarea>
