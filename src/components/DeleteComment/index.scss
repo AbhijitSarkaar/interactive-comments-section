@@ -1,40 +1,49 @@
 @use "Style/mixins";
 
-.delete-comment-container {
-  background-color: var(--white);
-  padding: 24px;
-  border-radius: 8px;
-  max-width: 400px;
+@media screen and (min-width: 320px) {
+  .delete-comment-container {
+    background-color: var(--white);
+    padding: 24px;
+    border-radius: 8px;
+    max-width: 343px;
+    box-sizing: border-box;
 
-  .header-text {
-    @include mixins.textStyle(20px, var(--dark-blue), 500);
-    margin: 0;
+    .header-text {
+      @include mixins.textStyle(20px, var(--dark-blue), 500);
+      margin: 0;
+    }
+
+    .body-content {
+      @include mixins.textStyle(16px, var(--grayish-blue));
+      margin: 0;
+      margin-top: 16px;
+    }
+
+    .action-buttons {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+
+      button {
+        @include mixins.textStyle(12px, var(--white), 500);
+        text-transform: uppercase;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+      }
+      .cancel {
+        background: var(--grayish-blue);
+      }
+      .delete {
+        background: var(--soft-red);
+      }
+    }
   }
+}
 
-  .body-content {
-    @include mixins.textStyle(16px, var(--grayish-blue));
-    margin: 0;
-    margin-top: 16px;
-  }
-
-  .action-buttons {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    margin-top: 16px;
-
-    button {
-      @include mixins.textStyle(12px, var(--white), 500);
-      text-transform: uppercase;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-    }
-    .cancel {
-      background: var(--grayish-blue);
-    }
-    .delete {
-      background: var(--soft-red);
-    }
+@media screen and (min-width: 900px) {
+  .delete-comment-container {
+    max-width: 400px;
   }
 }
