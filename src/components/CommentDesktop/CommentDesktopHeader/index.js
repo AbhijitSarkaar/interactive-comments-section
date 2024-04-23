@@ -3,7 +3,13 @@ import React, { useContext } from "react";
 import { CurrentUserContext } from "~/contexts/CurrentUserContext";
 import UserAvatar from "~/components/UserAvatar";
 
-const CommentDesktopHeader = ({ user, createdAt }) => {
+const CommentDesktopHeader = ({
+  user,
+  createdAt,
+  onDelete,
+  onEdit,
+  onReply,
+}) => {
   const currentUser = useContext(CurrentUserContext);
   const { username, image } = user;
 
@@ -12,7 +18,7 @@ const CommentDesktopHeader = ({ user, createdAt }) => {
   let actionbuttonsJsx = (
     <section className="action-buttons">
       <div className="button reply">
-        <img src="/images/icon-reply.svg" />
+        <img src="/images/icon-reply.svg" onClick={onReply} />
         <p>Reply</p>
       </div>
     </section>
@@ -22,11 +28,11 @@ const CommentDesktopHeader = ({ user, createdAt }) => {
     actionbuttonsJsx = (
       <section className="action-buttons">
         <div className="button delete">
-          <img src="/images/icon-delete.svg" />
+          <img src="/images/icon-delete.svg" onClick={onDelete} />
           <p>Delete</p>
         </div>
         <div className="button edit">
-          <img src="/images/icon-edit.svg" />
+          <img src="/images/icon-edit.svg" onClick={onEdit} />
           <p>Edit</p>
         </div>
       </section>

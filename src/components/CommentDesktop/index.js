@@ -4,7 +4,7 @@ import React from "react";
 import CommentDesktopHeader from "~/components/CommentDesktop/CommentDesktopHeader";
 import CommentDesktopEdit from "~/components/CommentDesktop/CommentDesktopEdit";
 
-const CommentDesktop = ({ comment, onUpvote }) => {
+const CommentDesktop = ({ comment, onUpvote, onDelete }) => {
   const { content, createdAt, score, user } = comment;
 
   const [INCREMENT, DECREMENT] = ["increment", "decrement"];
@@ -15,6 +15,18 @@ const CommentDesktop = ({ comment, onUpvote }) => {
     else if (type === DECREMENT) updatedScore -= 1;
 
     onUpvote({ id: comment.id, score: updatedScore });
+  };
+
+  const handleDelete = () => {
+    onDelete(comment.id);
+  };
+
+  const handleEdit = () => {
+    console.log("handleEdit");
+  };
+
+  const handleReply = () => {
+    console.log("handleReply");
   };
 
   return (
@@ -31,7 +43,13 @@ const CommentDesktop = ({ comment, onUpvote }) => {
         />
       </section>
       <section className="comment-section">
-        <CommentDesktopHeader user={user} createdAt={createdAt} />
+        <CommentDesktopHeader
+          user={user}
+          createdAt={createdAt}
+          onDelete={handleDelete}
+          onEdit={handleEdit}
+          onReply={handleReply}
+        />
         <div className="body-content">{content}</div>
         {/* <CommentDesktopEdit /> */}
       </section>

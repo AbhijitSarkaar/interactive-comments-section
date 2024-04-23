@@ -39,10 +39,24 @@ const App = () => {
     setComments(currentComments);
   };
 
+  const handleDelete = (commentId) => {
+    let updatedComments = [...comments];
+
+    updatedComments = updatedComments.filter(
+      (comment) => comment.id !== commentId
+    );
+
+    setComments(updatedComments);
+  };
+
   return (
     <section className="app-container">
       <CurrentUserContext.Provider value={currentUser}>
-        <CommentList comments={comments} onUpvote={handleUpvote} />
+        <CommentList
+          comments={comments}
+          onUpvote={handleUpvote}
+          onDelete={handleDelete}
+        />
       </CurrentUserContext.Provider>
       <AddCommentDesktop
         avatarUrl={currentUser.image.png}
