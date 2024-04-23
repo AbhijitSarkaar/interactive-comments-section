@@ -20,14 +20,26 @@
     .upvote-section {
       display: flex;
       flex-direction: column;
+      align-items: center;
       align-self: flex-start;
       padding: 16px 14.5px;
       gap: 15px;
       background-color: var(--very-light-gray);
-      width: max-content;
+      max-width: 40px;
+      box-sizing: border-box;
+
+      > img {
+        align-self: center;
+        cursor: pointer;
+      }
 
       .count {
         @include mixins.textStyle(16px, var(--moderate-blue), 500);
+      }
+
+      > div {
+        min-width: 18px;
+        text-align: center;
       }
     }
 

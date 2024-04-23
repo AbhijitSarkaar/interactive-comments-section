@@ -23,10 +23,26 @@ const App = () => {
     setComments(currentComments);
   };
 
+  const handleUpvote = (comment) => {
+    let currentComments = [...comments];
+
+    currentComments = currentComments.map((item) => {
+      if (item.id === comment.id) {
+        return {
+          ...item,
+          score: comment.score,
+        };
+      }
+      return item;
+    });
+
+    setComments(currentComments);
+  };
+
   return (
     <section className="app-container">
       <CurrentUserContext.Provider value={currentUser}>
-        <CommentList comments={comments} />
+        <CommentList comments={comments} onUpvote={handleUpvote} />
       </CurrentUserContext.Provider>
       <AddCommentDesktop
         avatarUrl={currentUser.image.png}
