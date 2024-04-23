@@ -52,7 +52,13 @@ const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
   const commentBodyJsx = editMode ? (
     <CommentDesktopEdit content={content} onUpdate={handleUpdate} />
   ) : (
-    <div className="body-content">{content}</div>
+    <div className="body-content">
+      {comment.replyingTo && (
+        <span className="mention">@{comment.replyingTo} </span>
+      )}
+
+      {content}
+    </div>
   );
 
   let repliesJsx = null;
@@ -60,7 +66,19 @@ const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
     repliesJsx = replies.length > 0 && (
       <section className="replies-container">
         <section className="replies">
-          <CommentList comments={replies} />
+          <CommentList
+            comments={replies}
+            onUpdate={onUpdate}
+            onDelete={onDelete}
+            onUpvote={onUpvote}
+            onReply={(data) =>
+              onReply({
+                id: comment.id,
+                content: data.content,
+                replyingTo: data.replyingTo,
+              })
+            }
+          />
         </section>
       </section>
     );

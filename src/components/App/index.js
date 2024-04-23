@@ -12,7 +12,7 @@ const App = () => {
   const handleCommentSend = (text) => {
     let currentComments = [...comments];
     currentComments.push({
-      id: comments.length + 1,
+      id: Math.floor(Math.random() * 99999),
       content: text,
       createdAt: "Now",
       score: 0,
@@ -32,19 +32,44 @@ const App = () => {
           score: comment.score,
         };
       }
-      return item;
+      let replies = [...item.replies];
+      replies = replies.map((reply) => {
+        if (reply.id === comment.id) {
+          return {
+            ...reply,
+            score: comment.score,
+          };
+        }
+        return reply;
+      });
+
+      return {
+        ...item,
+        replies,
+      };
     });
     setComments(currentComments);
   };
 
   const handleDelete = (commentId) => {
     let updatedComments = [...comments];
+    let commentsList = [];
+    updatedComments.forEach((comment) => {
+      if (comment.id !== commentId) {
+        if (comment.replies) {
+          let repliesList = [];
+          comment.replies.forEach((reply) => {
+            if (reply.id !== commentId) {
+              repliesList.push(reply);
+            }
+          });
+          comment.replies = repliesList;
+        }
+        commentsList.push(comment);
+      }
+    });
 
-    updatedComments = updatedComments.filter(
-      (comment) => comment.id !== commentId
-    );
-
-    setComments(updatedComments);
+    setComments(commentsList);
   };
 
   const handleUpdate = (comment) => {
@@ -56,7 +81,22 @@ const App = () => {
           content: comment.content,
         };
       }
-      return item;
+
+      let replies = [...item.replies];
+      replies = replies.map((reply) => {
+        if (reply.id === comment.id) {
+          return {
+            ...reply,
+            content: comment.content,
+          };
+        }
+        return reply;
+      });
+
+      return {
+        ...item,
+        replies,
+      };
     });
     setComments(currentComments);
   };
