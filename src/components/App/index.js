@@ -8,12 +8,27 @@ const App = () => {
   const [currentUser, setCurrentUser] = useState(data.currentUser);
   const [comments, setComments] = useState(data.comments);
 
-  console.log(currentUser.image.png);
+  const handleCommentSend = (text) => {
+    let currentComments = [...comments];
+    currentComments.push({
+      id: comments.length + 1,
+      content: text,
+      createdAt: "Now",
+      score: 0,
+      user: currentUser,
+      replies: [],
+    });
+
+    setComments(currentComments);
+  };
 
   return (
     <section className="app-container">
       <CommentList comments={comments} />
-      <AddCommentDesktop avatarUrl={currentUser.image.png} />
+      <AddCommentDesktop
+        avatarUrl={currentUser.image.png}
+        onSend={handleCommentSend}
+      />
     </section>
   );
 };
