@@ -1,16 +1,20 @@
 import "./index.scss";
-import React from "react";
+import React, { useState } from "react";
 import TextArea from "~/components/TextArea";
 import Button from "~/components/Button";
 
-const CommentDesktopEdit = () => {
-  let commentText = `@ramsesmiron I couldn’t agree more with this. Everything moves so fast and it always seems like everyone knows the newest library/framework. But the fundamentals are what stay constant`;
+const CommentDesktopEdit = ({ content, onUpdate }) => {
+  const [text, setText] = useState(content);
+
+  const handleClick = () => {
+    onUpdate(text);
+  };
 
   return (
     <section className="comment-desktop-edit-container">
-      <TextArea text={commentText} />
+      <TextArea text={text} onCommentInput={setText} />
       <div className="button-container">
-        <Button text={"Update"} />
+        <Button text={"Update"} onClick={handleClick} />
       </div>
     </section>
   );

@@ -2,7 +2,7 @@ import "./index.scss";
 import React from "react";
 import CommentDesktop from "~/components/CommentDesktop";
 
-const CommentList = ({ comments, onUpvote, onDelete }) => {
+const CommentList = ({ comments, onUpvote, onDelete, onUpdate }) => {
   const commentsJsx = comments.map((comment) => {
     return (
       <CommentDesktop
@@ -10,6 +10,7 @@ const CommentList = ({ comments, onUpvote, onDelete }) => {
         comment={comment}
         onUpvote={onUpvote}
         onDelete={onDelete}
+        onUpdate={onUpdate}
       />
     );
   });

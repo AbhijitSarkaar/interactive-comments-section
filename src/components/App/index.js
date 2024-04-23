@@ -25,7 +25,6 @@ const App = () => {
 
   const handleUpvote = (comment) => {
     let currentComments = [...comments];
-
     currentComments = currentComments.map((item) => {
       if (item.id === comment.id) {
         return {
@@ -35,7 +34,6 @@ const App = () => {
       }
       return item;
     });
-
     setComments(currentComments);
   };
 
@@ -49,6 +47,20 @@ const App = () => {
     setComments(updatedComments);
   };
 
+  const handleUpdate = (comment) => {
+    let currentComments = [...comments];
+    currentComments = currentComments.map((item) => {
+      if (item.id === comment.id) {
+        return {
+          ...item,
+          content: comment.content,
+        };
+      }
+      return item;
+    });
+    setComments(currentComments);
+  };
+
   return (
     <section className="app-container">
       <CurrentUserContext.Provider value={currentUser}>
@@ -56,6 +68,7 @@ const App = () => {
           comments={comments}
           onUpvote={handleUpvote}
           onDelete={handleDelete}
+          onUpdate={handleUpdate}
         />
       </CurrentUserContext.Provider>
       <AddCommentDesktop
