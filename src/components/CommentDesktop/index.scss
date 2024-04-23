@@ -8,52 +8,62 @@
 
 @media screen and (min-width: 900px) {
   .comment-desktop-container {
-    display: flex;
-    gap: 24px;
     width: 100%;
-    box-sizing: border-box;
-    background-color: white;
-    margin: auto;
-    padding: 24px;
-    margin: 10px 0;
-
-    .upvote-section {
+    display: block;
+    .comment {
       display: flex;
-      flex-direction: column;
-      align-items: center;
-      align-self: flex-start;
-      padding: 16px 14.5px;
-      gap: 15px;
-      background-color: var(--very-light-gray);
-      max-width: 40px;
-      box-sizing: border-box;
-
-      > img {
-        align-self: center;
-        cursor: pointer;
-      }
-
-      .count {
-        @include mixins.textStyle(16px, var(--moderate-blue), 500);
-      }
-
-      > div {
-        min-width: 18px;
-        text-align: center;
-      }
-    }
-
-    .comment-section {
+      gap: 24px;
       width: 100%;
+      box-sizing: border-box;
+      background-color: white;
+      margin: auto;
+      padding: 24px;
+      margin: 10px 0;
 
-      .body-content {
-        margin-top: 16px;
-        @include mixins.textStyle(16px, var(--grayish-blue));
+      .upvote-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: flex-start;
+        padding: 16px 14.5px;
+        gap: 15px;
+        background-color: var(--very-light-gray);
+        max-width: 40px;
+        box-sizing: border-box;
 
-        .mention {
-          color: var(--moderate-blue);
+        > img {
+          align-self: center;
+          cursor: pointer;
+        }
+
+        .count {
+          @include mixins.textStyle(16px, var(--moderate-blue), 500);
+        }
+
+        > div {
+          min-width: 18px;
+          text-align: center;
         }
       }
+
+      .comment-section {
+        width: 100%;
+
+        .body-content {
+          margin-top: 16px;
+          @include mixins.textStyle(16px, var(--grayish-blue));
+
+          .mention {
+            color: var(--moderate-blue);
+          }
+        }
+      }
+    }
+    .replies-container {
+      margin-left: 44px;
+      border-left: 2px solid var(--light-gray);
+      padding-left: 44px;
+      box-sizing: border-box;
     }
   }
 }

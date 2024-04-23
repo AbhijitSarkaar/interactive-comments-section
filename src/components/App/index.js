@@ -61,6 +61,30 @@ const App = () => {
     setComments(currentComments);
   };
 
+  const handleReply = (comment) => {
+    let currentComments = [...comments];
+    currentComments = currentComments.map((item) => {
+      if (item.id === comment.id) {
+        return {
+          ...item,
+          replies: [
+            ...item.replies,
+            {
+              id: Math.ceil(Math.random() * 99999),
+              content: comment.content,
+              createdAt: "Now",
+              score: 0,
+              user: currentUser,
+              replyingTo: comment.replyingTo,
+            },
+          ],
+        };
+      }
+      return item;
+    });
+    setComments(currentComments);
+  };
+
   return (
     <section className="app-container">
       <CurrentUserContext.Provider value={currentUser}>
@@ -69,6 +93,7 @@ const App = () => {
           onUpvote={handleUpvote}
           onDelete={handleDelete}
           onUpdate={handleUpdate}
+          onReply={handleReply}
         />
       </CurrentUserContext.Provider>
       <AddCommentDesktop

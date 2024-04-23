@@ -1,17 +1,23 @@
 import "./index.scss";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import CommentDesktopHeader from "~/components/CommentDesktop/CommentDesktopHeader";
 import CommentDesktopEdit from "~/components/CommentDesktop/CommentDesktopEdit";
+import AddCommentDesktop from "~/components/AddCommentDesktop";
+import { CurrentUserContext } from "~/contexts/CurrentUserContext.js";
+import CommentList from "../CommentList";
 
 const constants = {
   INCREMENT: "increment",
   DECREMENT: "decrement",
 };
 
-const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate }) => {
-  const { content, createdAt, score, user } = comment;
+const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
+  const { content, createdAt, score, user, replies } = comment;
 
   const [editMode, setEditMode] = useState(false);
+  const [replyMode, setReplyMode] = useState(false);
+
+  const currentUser = useContext(CurrentUserContext);
 
   const handleClick = (type) => {
     let updatedScore = score;
@@ -30,12 +36,17 @@ const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate }) => {
   };
 
   const handleReply = () => {
-    console.log("handleReply");
+    setReplyMode(true);
   };
 
   const handleUpdate = (text) => {
     onUpdate({ id: comment.id, content: text });
     setEditMode(false);
+  };
+
+  const handleReplyUpdate = (text) => {
+    onReply({ id: comment.id, content: text, replyingTo: user.username });
+    setReplyMode(false);
   };
 
   const commentBodyJsx = editMode ? (
@@ -44,29 +55,49 @@ const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate }) => {
     <div className="body-content">{content}</div>
   );
 
+  let repliesJsx = null;
+  if (replies) {
+    repliesJsx = replies.length > 0 && (
+      <section className="replies-container">
+        <section className="replies">
+          <CommentList comments={replies} />
+        </section>
+      </section>
+    );
+  }
+
   return (
     <section className="comment-desktop-container">
-      <section className="upvote-section">
-        <img
-          src="/images/icon-plus.svg"
-          onClick={() => handleClick(constants.INCREMENT)}
-        />
-        <div className="count">{score}</div>
-        <img
-          src="/images/icon-minus.svg"
-          onClick={() => handleClick(constants.DECREMENT)}
-        />
+      <section className="comment">
+        <section className="upvote-section">
+          <img
+            src="/images/icon-plus.svg"
+            onClick={() => handleClick(constants.INCREMENT)}
+          />
+          <div className="count">{score}</div>
+          <img
+            src="/images/icon-minus.svg"
+            onClick={() => handleClick(constants.DECREMENT)}
+          />
+        </section>
+        <section className="comment-section">
+          <CommentDesktopHeader
+            user={user}
+            createdAt={createdAt}
+            onDelete={handleDelete}
+            onEdit={handleEdit}
+            onReply={handleReply}
+          />
+          {commentBodyJsx}
+        </section>
       </section>
-      <section className="comment-section">
-        <CommentDesktopHeader
-          user={user}
-          createdAt={createdAt}
-          onDelete={handleDelete}
-          onEdit={handleEdit}
-          onReply={handleReply}
+      {replyMode && (
+        <AddCommentDesktop
+          avatarUrl={currentUser.image.png}
+          onSend={handleReplyUpdate}
         />
-        {commentBodyJsx}
-      </section>
+      )}
+      {repliesJsx}
     </section>
   );
 };
