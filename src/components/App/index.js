@@ -2,6 +2,7 @@ import "./index.scss";
 import React, { useState } from "react";
 import CommentList from "~/components/CommentList";
 import AddCommentDesktop from "~/components/AddCommentDesktop";
+import { CurrentUserContext } from "~/contexts/CurrentUserContext.js";
 import data from "~/data/data.json";
 
 const App = () => {
@@ -24,7 +25,9 @@ const App = () => {
 
   return (
     <section className="app-container">
-      <CommentList comments={comments} />
+      <CurrentUserContext.Provider value={currentUser}>
+        <CommentList comments={comments} />
+      </CurrentUserContext.Provider>
       <AddCommentDesktop
         avatarUrl={currentUser.image.png}
         onSend={handleCommentSend}
