@@ -13,6 +13,10 @@ const App = () => {
   const [comments, setComments] = useState(data.comments);
   const [commentDeleteFlow, setCommentDeleteFlow] = useState(false);
   const [deleteId, setDeleteId] = useState("");
+  const [scoreIdHash, setScoreIdHash] = useState({
+    upvoted: {},
+    downvoted: {},
+  });
 
   const handleCommentSend = (text) => {
     let currentComments = [...comments];
@@ -143,13 +147,61 @@ const App = () => {
     setCommentDeleteFlow(false);
   };
 
+  const handleScoreUpdate = (comment) => {
+    let updatedScoreIdHash = {
+      ...scoreIdHash,
+      upvoted: {
+        ...scoreIdHash.upvoted,
+      },
+      downvoted: {
+        ...scoreIdHash.downvoted,
+      },
+    };
+    let currentComments = [...comments];
+    let currentComment = null;
+
+    currentComments.forEach((item) => {
+      if (item.id === comment.id) {
+        currentComment = { ...item };
+      }
+      if (item.replies) {
+        item.replies.forEach((subItem) => {
+          if (subItem.id === comment.id) {
+            currentComment = { ...subItem };
+          }
+        });
+      }
+    });
+
+    if (comment.score > currentComment.score) {
+      if (updatedScoreIdHash.upvoted[comment.id]) return;
+
+      updatedScoreIdHash.upvoted[comment.id] = true;
+
+      if (updatedScoreIdHash.downvoted[comment.id]) {
+        updatedScoreIdHash.upvoted[comment.id] = false;
+      }
+      updatedScoreIdHash.downvoted[comment.id] = false;
+    } else if (comment.score < currentComment.score) {
+      //already downvoted
+      if (updatedScoreIdHash.downvoted[comment.id]) return;
+
+      updatedScoreIdHash.downvoted[comment.id] = true;
+      if (updatedScoreIdHash.upvoted[comment.id]) {
+        updatedScoreIdHash.downvoted[comment.id] = false;
+      }
+      updatedScoreIdHash.upvoted[comment.id] = false;
+    }
+    setScoreIdHash(updatedScoreIdHash);
+    handleUpvote(comment);
+  };
+
   return (
     <section className="app-container">
       <CurrentUserContext.Provider value={currentUser}>
         <CommentList
           comments={comments}
-          onUpvote={handleUpvote}
-          // onDelete={handleDelete}
+          onUpvote={handleScoreUpdate}
           onDelete={handleDeleteFlow}
           onUpdate={handleUpdate}
           onReply={handleReply}
