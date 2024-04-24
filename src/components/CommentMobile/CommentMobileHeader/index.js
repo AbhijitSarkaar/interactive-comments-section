@@ -1,17 +1,21 @@
 import "./index.scss";
 
-import React from "react";
+import React, { useContext } from "react";
 import UserAvatar from "~/components/UserAvatar";
+import { CurrentUserContext } from "~/contexts/CurrentUserContext";
 
-const CommentMobileHeader = () => {
+const CommentMobileHeader = ({ user, createdAt }) => {
+  const currentuser = useContext(CurrentUserContext);
+  const isCurrentUser = user.username === currentuser.username;
+
   return (
     <section className="comment-mobile-header-container">
-      <UserAvatar src={"/images/image-juliusomo.png"} />
+      <UserAvatar src={user.image.png} />
       <div className="username">
-        <p className="text">juliusomo</p>
-        <div className="current-user">you</div>
+        <p className="text">{user.username}</p>
+        {isCurrentUser && <div className="current-user">you</div>}
       </div>
-      <p className="time">1 month ago</p>
+      <p className="time">{createdAt}</p>
     </section>
   );
 };

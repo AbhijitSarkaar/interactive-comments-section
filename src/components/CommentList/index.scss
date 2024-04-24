@@ -1,0 +1,15 @@
+@media screen and (min-width: 320px) {
+  .comment-list-container {
+    .desktop {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .comment-list-container {
+    .mobile {
+      display: none;
+    }
+  }
+}

@@ -1,7 +1,7 @@
 import "./index.scss";
 import React, { useState } from "react";
 import CommentList from "~/components/CommentList";
-import AddCommentDesktop from "~/components/AddCommentDesktop";
+import AddComment from "~/components/AddComment";
 import { CurrentUserContext } from "~/contexts/CurrentUserContext.js";
 import data from "~/data/data.json";
 
@@ -136,7 +136,7 @@ const App = () => {
           onReply={handleReply}
         />
       </CurrentUserContext.Provider>
-      <AddCommentDesktop
+      <AddComment
         avatarUrl={currentUser.image.png}
         onSend={handleCommentSend}
       />

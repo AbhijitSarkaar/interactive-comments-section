@@ -6,39 +6,17 @@
     padding: 16px;
     border-radius: 8px;
 
-    textarea {
-      @include mixins.textStyle(12px, var(--grayish-blue));
-      border: 1px solid var(--light-gray);
-      font-family: inherit;
-      width: 100%;
-      border-radius: 8px;
-      min-height: 96px;
-      padding: 20px;
-      box-sizing: border-box;
-      display: block;
-      resize: none;
-    }
-
     .footer {
       margin-top: 13px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-
-      img {
-        height: 32px;
-        width: 32px;
-        border-radius: 50%;
-      }
-
-      button {
-        @include mixins.textStyle(12px, var(--white), 500);
-        background: var(--moderate-blue);
-        text-transform: uppercase;
-        padding: 12px 32px;
-        border-radius: 8px;
-        border: none;
-      }
     }
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .add-comment-mobile-container {
+    display: none;
   }
 }

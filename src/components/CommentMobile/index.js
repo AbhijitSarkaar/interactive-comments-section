@@ -3,17 +3,18 @@ import React from "react";
 import CommentMobileHeader from "~/components/CommentMobile/CommentMobileHeader";
 import CommentMobileFooter from "~/components/CommentMobile/CommentMobileFooter";
 
-const CommentMobile = () => {
+const CommentMobile = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
+  const { content, user, createdAt, score } = comment;
+
+  const handleUpvote = (value) => {
+    onUpvote({ id: comment.id, score: value });
+  };
+
   return (
     <section className="comment-mobile-container">
-      <CommentMobileHeader />
-      <p className="body-content">
-        <span className="user">@ramsesmiron</span> I couldn’t agree more with
-        this. Everything moves so fast and it always seems like everyone knows
-        the newest library/framework. But the fundamentals are what stay
-        constant.
-      </p>
-      <CommentMobileFooter />
+      <CommentMobileHeader user={user} createdAt={createdAt} />
+      <p className="body-content">{content}</p>
+      <CommentMobileFooter user={user} score={score} onUpvote={handleUpvote} />
     </section>
   );
 };
