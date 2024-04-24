@@ -2,12 +2,17 @@ import "./index.scss";
 import React, { useState } from "react";
 import CommentList from "~/components/CommentList";
 import AddComment from "~/components/AddComment";
+import Dialog from "~/components/Dialog";
+import DeleteComment from "~/components/DeleteComment";
 import { CurrentUserContext } from "~/contexts/CurrentUserContext.js";
 import data from "~/data/data.json";
+import { ConfirmationDialog } from "~/constants";
 
 const App = () => {
   const [currentUser, setCurrentUser] = useState(data.currentUser);
   const [comments, setComments] = useState(data.comments);
+  const [commentDeleteFlow, setCommentDeleteFlow] = useState(false);
+  const [deleteId, setDeleteId] = useState("");
 
   const handleCommentSend = (text) => {
     let currentComments = [...comments];
@@ -125,18 +130,37 @@ const App = () => {
     setComments(currentComments);
   };
 
+  const handleDeleteFlow = (commentId) => {
+    setDeleteId(commentId);
+    setCommentDeleteFlow(true);
+  };
+
+  const handleDialogClick = (type) => {
+    if (type === ConfirmationDialog.DELETE) {
+      handleDelete(deleteId);
+    }
+    setDeleteId("");
+    setCommentDeleteFlow(false);
+  };
+
   return (
     <section className="app-container">
       <CurrentUserContext.Provider value={currentUser}>
         <CommentList
           comments={comments}
           onUpvote={handleUpvote}
-          onDelete={handleDelete}
+          // onDelete={handleDelete}
+          onDelete={handleDeleteFlow}
           onUpdate={handleUpdate}
           onReply={handleReply}
         />
         <AddComment onSend={handleCommentSend} />
       </CurrentUserContext.Provider>
+      {commentDeleteFlow && (
+        <Dialog>
+          <DeleteComment onClick={handleDialogClick} />
+        </Dialog>
+      )}
     </section>
   );
 };

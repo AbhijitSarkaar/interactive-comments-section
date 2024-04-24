@@ -1,7 +1,8 @@
 import "./index.scss";
 import React from "react";
+import { ConfirmationDialog } from "~/constants";
 
-const DeleteComment = () => {
+const DeleteComment = ({ onClick }) => {
   return (
     <section className="delete-comment-container">
       <p className="header-text">Delete comment</p>
@@ -10,8 +11,15 @@ const DeleteComment = () => {
         comment and can’t be undone.
       </p>
       <section className="action-buttons">
-        <button className="cancel">no, cancel</button>
-        <button className="delete">yes, delete</button>
+        <button className="cancel" onClick={onClick}>
+          no, cancel
+        </button>
+        <button
+          className="delete"
+          onClick={() => onClick(ConfirmationDialog.DELETE)}
+        >
+          yes, delete
+        </button>
       </section>
     </section>
   );

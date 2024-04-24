@@ -1,11 +1,7 @@
 import "./index.scss";
 import React, { useContext } from "react";
 import { CurrentUserContext } from "~/contexts/CurrentUserContext";
-
-const constants = {
-  INCREMENT: "increment",
-  DECREMENT: "decrement",
-};
+import { Upvote } from "~/constants";
 
 const CommentMobileFooter = ({
   user,
@@ -20,8 +16,8 @@ const CommentMobileFooter = ({
 
   const handleClick = (type) => {
     let updatedScore = score;
-    if (type === constants.INCREMENT) updatedScore++;
-    if (type === constants.DECREMENT) updatedScore--;
+    if (type === Upvote.INCREMENT) updatedScore++;
+    if (type === Upvote.DECREMENT) updatedScore--;
     onUpvote(updatedScore);
   };
 
@@ -51,13 +47,13 @@ const CommentMobileFooter = ({
         <img
           src={"/images/icon-plus.svg"}
           alt="plus-icon"
-          onClick={() => handleClick(constants.INCREMENT)}
+          onClick={() => handleClick(Upvote.INCREMENT)}
         />
         <div className="count">{score}</div>
         <img
           src={"/images/icon-minus.svg"}
           alt="minus-icon"
-          onClick={() => handleClick(constants.DECREMENT)}
+          onClick={() => handleClick(Upvote.DECREMENT)}
         />
       </div>
       {actionButtonsJsx}

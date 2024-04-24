@@ -5,11 +5,7 @@ import AddCommentDesktop from "~/components/AddCommentDesktop";
 import EditComment from "~/components/EditComment";
 import { CurrentUserContext } from "~/contexts/CurrentUserContext.js";
 import CommentList from "../CommentList";
-
-const constants = {
-  INCREMENT: "increment",
-  DECREMENT: "decrement",
-};
+import { Upvote } from "~/constants";
 
 const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
   const { content, createdAt, score, user, replies } = comment;
@@ -21,8 +17,8 @@ const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
 
   const handleClick = (type) => {
     let updatedScore = score;
-    if (type === constants.INCREMENT) updatedScore += 1;
-    else if (type === constants.DECREMENT) updatedScore -= 1;
+    if (type === Upvote.INCREMENT) updatedScore += 1;
+    else if (type === Upvote.DECREMENT) updatedScore -= 1;
 
     onUpvote({ id: comment.id, score: updatedScore });
   };
@@ -90,12 +86,12 @@ const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
         <section className="upvote-section">
           <img
             src="/images/icon-plus.svg"
-            onClick={() => handleClick(constants.INCREMENT)}
+            onClick={() => handleClick(Upvote.INCREMENT)}
           />
           <div className="count">{score}</div>
           <img
             src="/images/icon-minus.svg"
-            onClick={() => handleClick(constants.DECREMENT)}
+            onClick={() => handleClick(Upvote.DECREMENT)}
           />
         </section>
         <section className="comment-section">
@@ -109,13 +105,13 @@ const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
           {commentBodyJsx}
         </section>
       </section>
-      {/* {replyMode && (
+      {replyMode && (
         <AddCommentDesktop
           avatarUrl={currentUser.image.png}
           onSend={handleReplyUpdate}
         />
       )}
-      {repliesJsx} */}
+      {repliesJsx}
     </section>
   );
 };
