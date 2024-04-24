@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import TextArea from "~/components/TextArea";
 import Button from "~/components/Button";
 
-const CommentDesktopEdit = ({ content, onUpdate }) => {
+const EditComment = ({ content, onUpdate }) => {
   const [text, setText] = useState(content);
 
   const handleClick = () => {
@@ -11,7 +11,7 @@ const CommentDesktopEdit = ({ content, onUpdate }) => {
   };
 
   return (
-    <section className="comment-desktop-edit-container">
+    <section className="edit-comment">
       <TextArea text={text} onCommentInput={setText} />
       <div className="button-container">
         <Button text={"Update"} onClick={handleClick} />
@@ -20,4 +20,4 @@ const CommentDesktopEdit = ({ content, onUpdate }) => {
   );
 };
 
-export default CommentDesktopEdit;
+export default EditComment;

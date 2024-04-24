@@ -7,7 +7,13 @@ const constants = {
   DECREMENT: "decrement",
 };
 
-const CommentMobileFooter = ({ user, score, onUpvote }) => {
+const CommentMobileFooter = ({
+  user,
+  score,
+  onUpvote,
+  onDelete,
+  onEditClick,
+}) => {
   const currentUser = useContext(CurrentUserContext);
   const isCurrentUser = user.username === currentUser.username;
 
@@ -21,11 +27,11 @@ const CommentMobileFooter = ({ user, score, onUpvote }) => {
   const actionButtonsJsx = isCurrentUser ? (
     <div className="action-buttons">
       <div className="delete">
-        <img src={"/images/icon-delete.svg"} />
+        <img src={"/images/icon-delete.svg"} onClick={onDelete} />
         <p className="text">Delete</p>
       </div>
       <div className="edit">
-        <img src={"/images/icon-edit.svg"} />
+        <img src={"/images/icon-edit.svg"} onClick={onEditClick} />
         <p className="text">Edit</p>
       </div>
     </div>

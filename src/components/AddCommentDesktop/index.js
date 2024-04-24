@@ -1,11 +1,13 @@
 import "./index.scss";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Button from "~/components/Button";
 import TextArea from "~/components/TextArea";
 import UserAvatar from "~/components/UserAvatar";
+import { CurrentUserContext } from "~/contexts/CurrentUserContext";
 
-const AddCommentDesktop = ({ avatarUrl, onSend }) => {
+const AddCommentDesktop = ({ onSend }) => {
   const [commentText, setCommentText] = useState("");
+  const currentUser = useContext(CurrentUserContext);
 
   const handleClick = () => {
     onSend(commentText);
@@ -14,7 +16,7 @@ const AddCommentDesktop = ({ avatarUrl, onSend }) => {
 
   return (
     <section className="add-comment-desktop-container">
-      <UserAvatar src={avatarUrl} />
+      <UserAvatar src={currentUser.image.png} />
       <TextArea text={commentText} onCommentInput={setCommentText} />
       <Button text={"Send"} onClick={handleClick} />
     </section>

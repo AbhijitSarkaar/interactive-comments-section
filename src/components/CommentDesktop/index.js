@@ -1,8 +1,8 @@
 import "./index.scss";
 import React, { useContext, useState } from "react";
 import CommentDesktopHeader from "~/components/CommentDesktop/CommentDesktopHeader";
-import CommentDesktopEdit from "~/components/CommentDesktop/CommentDesktopEdit";
 import AddCommentDesktop from "~/components/AddCommentDesktop";
+import EditComment from "~/components/EditComment";
 import { CurrentUserContext } from "~/contexts/CurrentUserContext.js";
 import CommentList from "../CommentList";
 
@@ -50,7 +50,7 @@ const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
   };
 
   const commentBodyJsx = editMode ? (
-    <CommentDesktopEdit content={content} onUpdate={handleUpdate} />
+    <EditComment content={content} onUpdate={handleUpdate} />
   ) : (
     <div className="body-content">
       {comment.replyingTo && (
@@ -109,13 +109,13 @@ const CommentDesktop = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
           {commentBodyJsx}
         </section>
       </section>
-      {replyMode && (
+      {/* {replyMode && (
         <AddCommentDesktop
           avatarUrl={currentUser.image.png}
           onSend={handleReplyUpdate}
         />
       )}
-      {repliesJsx}
+      {repliesJsx} */}
     </section>
   );
 };

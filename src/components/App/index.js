@@ -135,11 +135,8 @@ const App = () => {
           onUpdate={handleUpdate}
           onReply={handleReply}
         />
+        <AddComment onSend={handleCommentSend} />
       </CurrentUserContext.Provider>
-      <AddComment
-        avatarUrl={currentUser.image.png}
-        onSend={handleCommentSend}
-      />
     </section>
   );
 };

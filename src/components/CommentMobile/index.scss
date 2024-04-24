@@ -4,6 +4,7 @@
   .comment-mobile-container {
     padding: 16px;
     background-color: var(--white);
+    margin: 8px 0px;
 
     .body-content {
       @include mixins.textStyle(16px, var(--grayish-blue), 400);
