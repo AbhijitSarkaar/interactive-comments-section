@@ -13,6 +13,7 @@ const CommentMobileFooter = ({
   onUpvote,
   onDelete,
   onEditClick,
+  onReplyClick,
 }) => {
   const currentUser = useContext(CurrentUserContext);
   const isCurrentUser = user.username === currentUser.username;
@@ -38,7 +39,7 @@ const CommentMobileFooter = ({
   ) : (
     <div className="action-buttons">
       <div className="reply">
-        <img src={"/images/icon-reply.svg"} />
+        <img src={"/images/icon-reply.svg"} onClick={onReplyClick} />
         <p className="text">Reply</p>
       </div>
     </div>

@@ -3,11 +3,14 @@ import React, { useState } from "react";
 import CommentMobileHeader from "~/components/CommentMobile/CommentMobileHeader";
 import CommentMobileFooter from "~/components/CommentMobile/CommentMobileFooter";
 import EditComment from "~/components/EditComment";
+import CommentList from "~/components/CommentList";
+import AddCommentMobile from "~/components/AddCommentMobile";
 
 const CommentMobile = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
-  const { content, user, createdAt, score } = comment;
+  const { content, user, createdAt, score, replies } = comment;
 
   const [editMode, setEditMode] = useState(false);
+  const [replyMode, setReplyMode] = useState(false);
 
   const handleUpvote = (value) => {
     onUpvote({ id: comment.id, score: value });
@@ -26,6 +29,37 @@ const CommentMobile = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
     setEditMode(false);
   };
 
+  const handleReplyClick = () => {
+    setReplyMode(true);
+  };
+
+  const handleReply = (text) => {
+    onReply({ id: comment.id, content: text, replyingTo: user.username });
+    setReplyMode(false);
+  };
+
+  let repliesJsx = null;
+  if (replies && replies.length > 0)
+    repliesJsx = (
+      <section className="mobile-replies-container">
+        <section className="mobile-replies">
+          <CommentList
+            comments={replies}
+            onUpvote={onUpvote}
+            onUpdate={onUpdate}
+            onDelete={onDelete}
+            onReply={(data) => {
+              onReply({
+                id: comment.id,
+                content: data.content,
+                replyingTo: data.replyingTo,
+              });
+            }}
+          />
+        </section>
+      </section>
+    );
+
   return (
     <>
       <section className="comment-mobile-container">
@@ -42,8 +76,11 @@ const CommentMobile = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
           onUpvote={handleUpvote}
           onDelete={handleDelete}
           onEditClick={handleEditMode}
+          onReplyClick={handleReplyClick}
         />
       </section>
+      {replyMode && <AddCommentMobile onSend={handleReply} />}
+      {repliesJsx}
     </>
   );
 };
