@@ -10,7 +10,7 @@
       @include mixins.textStyle(16px, var(--grayish-blue), 400);
       margin: 16px 0;
       line-height: 24px;
-      span.user {
+      span.mention {
         color: var(--moderate-blue);
       }
     }

@@ -7,7 +7,7 @@ import CommentList from "~/components/CommentList";
 import AddCommentMobile from "~/components/AddCommentMobile";
 
 const CommentMobile = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
-  const { content, user, createdAt, score, replies } = comment;
+  const { content, user, createdAt, score, replies, replyingTo } = comment;
 
   const [editMode, setEditMode] = useState(false);
   const [replyMode, setReplyMode] = useState(false);
@@ -60,14 +60,21 @@ const CommentMobile = ({ comment, onUpvote, onDelete, onUpdate, onReply }) => {
       </section>
     );
 
+  let mentionJsx = <span className="mention">@{replyingTo}</span>;
+  let contentJsx = (
+    <>
+      {replyingTo && mentionJsx} {content}
+    </>
+  );
+
   return (
     <>
       <section className="comment-mobile-container">
         <CommentMobileHeader user={user} createdAt={createdAt} />
         {editMode ? (
-          <EditComment content={content} onUpdate={handleUpdate} />
+          <EditComment content={contentJsx} onUpdate={handleUpdate} />
         ) : (
-          <p className="body-content">{content}</p>
+          <p className="body-content">{contentJsx}</p>
         )}
 
         <CommentMobileFooter
